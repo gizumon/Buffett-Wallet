@@ -4,7 +4,7 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Trading extends Model
+class Buy extends Model
 {
     //
 }

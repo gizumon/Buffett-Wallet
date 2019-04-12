@@ -1,0 +1,55 @@
+/*
+This file is used as a common style file.
+This application thema color is the followings.
+# Grean
+  - Dark : #0C555D
+  - Normal : #58BE89
+  - Light : #26AE90
+# Black
+  - Dark : #27313D
+  - Gray : #7C858E
+  - Light : #CCD0D5
+*/
+
+.myfont_black {
+    letter-spacing: .1em;
+    text-align: justify;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    color: #27313F!important;
+}
+.myfont {
+    letter-spacing: .1em;
+    text-align: justify;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    color: #ffffff!important;
+}
+.mygreen_dark {
+    background-color: #0C555D;
+    color : #ffffff;
+}
+.mygreen_normal {
+    background-color: #26ae90;
+    color: #ffffff;
+}
+.mygreen_light {
+    background-color: #60C4B0;
+    color: #ffffff;
+}
+.mygray_dark {
+    background-color: #27313D;
+    color: #ffffff;
+}
+.mygray_normal {
+    background-color: #7C858E;
+    color: #ffffff;
+}
+.mygray_light {
+    background-color: #CCD0D5;
+    color: #ffffff;
+}
+.footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  /* Set the fixed height of the footer here */
+}
