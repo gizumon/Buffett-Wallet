@@ -14,8 +14,10 @@ class CreateBuysTable extends Migration
     public function up()
     {
         Schema::create('buys', function (Blueprint $table) {
-            $table->bigIncrements('id');
-            $table->timestamps();
+            $table->increments('id')->comment('ID');
+            $table->date('date')->comment('Buy at');
+            $table->integer('price')->comment('Price for buy');
+            $table->integer('target_price')->comment('Target price');
         });
     }
 

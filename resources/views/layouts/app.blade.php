@@ -23,7 +23,7 @@
 </head>
 <body>
     <div id="app">
-        <nav class="navbar navbar-expand-md navbar-light navbar-laravel mygreen_dark">
+        <nav class="navbar navbar-expand-md navbar-light navbar-laravel mygreen_dark myheader">
             <div class="container">
                 <a class="navbar-brand font-weight-bold myfont" href="{{ url('/') }}">
                     {{ config('app.name', 'Buffet Wallet') }}

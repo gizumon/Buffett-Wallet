@@ -13,9 +13,11 @@ class CreateStocksTable extends Migration
      */
     public function up()
     {
-        Schema::create('Stocks', function (Blueprint $table) {
-            $table->bigIncrements('id');
-            $table->timestamps();
+        Schema::create('stocks', function (Blueprint $table) {
+            $table->integer('stock_code')->default(0000)->comment('Stock code');
+            $table->string('name')->default(0)->comment('Stock name');
+            $table->integer('sales_num')->default(0)->comment('The number of deal');
+            $table->timestamp('created_at')->comment('Timestamp');
         });
     }
 

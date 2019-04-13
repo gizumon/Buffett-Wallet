@@ -11,6 +11,10 @@ This application thema color is the followings.
   - Light : #CCD0D5
 */
 
+.myheader { 
+    height: 75px;
+}
+
 .myfont_black {
     letter-spacing: .1em;
     text-align: justify;

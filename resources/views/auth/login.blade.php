@@ -3,7 +3,7 @@
 @section('content')
 <div class="wrapper">
     <div class="container_import">
-        <h1 class="myfont text-center font-weght-bold">Welcome</h1>
+        <h1 class="myfont text-center font-weight-bold">Welcome</h1>
         <form method="POST" action="{{ route('login') }}">
             <input type="text" placeholder="Username">
             <input type="password" placeholder="Password">

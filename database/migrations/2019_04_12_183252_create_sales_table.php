@@ -14,8 +14,10 @@ class CreateSalesTable extends Migration
     public function up()
     {
         Schema::create('sales', function (Blueprint $table) {
-            $table->bigIncrements('id');
-            $table->timestamps();
+            $table->increments('id')->comment('sale id');
+            $table->date('date')->useCurrent()->comment('sale date');
+            $table->integer('price')->comment('sale price');
+            $table->string('reason')->comment('reason for sale');
         });
     }
 
