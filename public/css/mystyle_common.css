@@ -14,19 +14,53 @@ This application thema color is the followings.
 .myheader { 
     height: 75px;
 }
-
-.myfont_black {
-    letter-spacing: .1em;
-    text-align: justify;
-    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-    color: #27313F!important;
+.myfield_large {
+    position: relative;
+    height: 230px;
+    top: -24px;
 }
+.myfield_midium {
+    position: relative;
+    height: 150px;
+    top: -24px;
+}
+.mybtn_exlg {
+    padding: 1.5rem 0.5rem;
+    width: 100%;
+    height: 100%;
+    font-size: 5.0rem;
+    line-height: 0;
+    border-radius: 1.5rem; 
+    background: none;
+    background-color: #ffffff;
+    border:0;
+}
+
+/* # MyFont */
 .myfont {
     letter-spacing: .1em;
     text-align: justify;
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
     color: #ffffff!important;
 }
+.myfont_black {
+    letter-spacing: .1em;
+    text-align: justify;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    color: #27313F!important;
+}
+.myfont_green {
+    letter-spacing: .1em;
+    text-align: justify;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    color: #0C555D!important;
+}
+.myfont-family_words {
+    font-family: 'Indie Flower', cursive;
+    font-size: 20px;
+}
+
+/* # MyColor */
 .mygreen_dark {
     background-color: #0C555D;
     color : #ffffff;
@@ -36,6 +70,7 @@ This application thema color is the followings.
     color: #ffffff;
 }
 .mygreen_light {
+    margin:0px;
     background-color: #60C4B0;
     color: #ffffff;
 }
@@ -52,7 +87,7 @@ This application thema color is the followings.
     color: #ffffff;
 }
 .footer {
-  position: absolute;
+  position: fixed;
   bottom: 0;
   width: 100%;
   /* Set the fixed height of the footer here */

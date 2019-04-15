@@ -15,10 +15,8 @@ Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
 
 Route::get('/', ['middleware' => 'auth', function () {
-    $books = Book::all();
-    return view('books',[
-        "books" => $books
-    ]);
+//    $books = Book::all();
+    return redirect('/home');
 }]);
 
 Route::post('/book', ['middleware' => 'auth',  function (Request $request) {

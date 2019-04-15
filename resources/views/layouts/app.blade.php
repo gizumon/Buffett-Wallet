@@ -20,10 +20,11 @@
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     <link href="{{ asset('css/importstyle_login.css') }}" rel="stylesheet">
     <link href="{{ asset('css/mystyle_common.css') }}" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Indie+Flower" rel="stylesheet">
 </head>
 <body>
     <div id="app">
-        <nav class="navbar navbar-expand-md navbar-light navbar-laravel mygreen_dark myheader">
+        <nav class="row navbar navbar-expand-md navbar-light navbar-laravel mygreen_dark myheader">
             <div class="container">
                 <a class="navbar-brand font-weight-bold myfont" href="{{ url('/') }}">
                     {{ config('app.name', 'Buffet Wallet') }}
@@ -52,12 +53,12 @@
                             @endif
                         @else
                             <li class="nav-item dropdown">
-                                <a id="navbarDropdown" class="nav-link dropdown-toggle myfont" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                                <a id="navbarDropdown" class="nav-link dropdown-toggle myfont font-weight-bold" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                                     {{ Auth::user()->name }} <span class="caret"></span>
                                 </a>
 
                                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                                    <a class="dropdown-item myfont" href="{{ route('logout') }}"
+                                    <a class="dropdown-item myfont_green font-weight-bold" href="{{ route('logout') }}"
                                        onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
                                         {{ __('Logout') }}
