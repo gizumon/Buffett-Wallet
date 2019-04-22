@@ -24,7 +24,7 @@
 </head>
 <body>
     <div id="app">
-        <nav class="row navbar navbar-expand-md navbar-light navbar-laravel mygreen_dark myheader">
+        <nav class="navbar navbar-expand-md navbar-light navbar-laravel mygreen_dark myheader">
             <div class="container">
                 <a class="navbar-brand font-weight-bold myfont" href="{{ url('/') }}">
                     {{ config('app.name', 'Buffet Wallet') }}
@@ -74,13 +74,12 @@
                 </div>
             </div>
         </nav>
-
-        <main class="py-4">
-            @yield('content')
-        </main>
     </div>
+    <main class="content">
+        @yield('content')
+    </main>
 </body>
-<footer class="footer mygreen_dark">
+<footer class="footer mygreen_dark col-sm-12">
     <div class="text-center myfont">Developping... Created from April 3rd in 2019.</div>
 </footer>
 </html>

@@ -8,8 +8,8 @@
         <!-- CSRF保護 -->
         @csrf
 
-            <input id="email" type="email" class="{{ $errors->has('email') ? ' is-invalid' : '' }}" name="email" value="{{ old('email') }}" required autofocus>
-            <input id="password" type="password" class="{{ $errors->has('password') ? ' is-invalid' : '' }}" name="password" required>
+            <input id="email" type="email" class="{{ $errors->has('email') ? ' is-invalid' : '' }} login" name="email" value="{{ old('email') }}" required autofocus>
+            <input id="password" type="password" class="{{ $errors->has('password') ? ' is-invalid' : '' }} login" name="password" required>
             <button type="submit" id="login-button">Login</button>
         </form>
     </div>

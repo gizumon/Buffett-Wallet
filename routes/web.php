@@ -12,11 +12,27 @@
 */
 
 Auth::routes();
+
+//Home page
+Route::get('/', ['middleware' => 'auth', function () {
+    return redirect('/home');
+}]);
 Route::get('/home', 'HomeController@index')->name('home');
 
-Route::get('/', ['middleware' => 'auth', function () {
-//    $books = Book::all();
-    return redirect('/home');
+//Evaluation list page
+Route::get('/list', 'ListController@index')->name('list');
+Route::post('/list', 'ListController@addList')->name('list');
+Route::delete('/list', 'ListController@delete')->name('list');
+
+
+//Route::get('/list', ['middleware' => 'auth', function () {
+//    $stock_code = 0;
+//    $name = "stock";
+//    return redirect('/list');
+//}]);
+
+Route::get('/serch', ['middleware' => 'auth', function () {
+    return redirect('/serch');
 }]);
 
 Route::post('/book', ['middleware' => 'auth',  function (Request $request) {
