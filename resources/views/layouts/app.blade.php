@@ -9,8 +9,6 @@
 
     <title>{{ config('app.name', 'Buffett Wallet') }}</title>
 
-    <!-- Scripts -->
-    <script src="{{ asset('js/app.js') }}" defer></script>
 
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
@@ -78,8 +76,14 @@
     <main class="content">
         @yield('content')
     </main>
+    <!-- Scripts -->
+    <script src="{{ asset('js/app.js') }}" defer></script>
+    <script src='//ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js' async></script>
+    <script type='text/javascript' src="{{ asset('js/import/jquery.validate.js') }}" defer></script>
+    <script type='text/javascript' src="{{ asset('js/import/additional-methods.js') }}" defer></script>
+    <script src="{{ asset('js/common.js') }}" defer></script>
 </body>
-<footer class="footer mygreen_dark col-sm-12">
+<footer class="footer mygreen_dark">
     <div class="text-center myfont">Developping... Created from April 3rd in 2019.</div>
 </footer>
 </html>

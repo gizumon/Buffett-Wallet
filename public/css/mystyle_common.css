@@ -144,10 +144,41 @@ This application thema color is the followings.
     color: #ffffff;
 }
 .content {
-  min-height: calc(100vh - 70px);
+  min-height: calc(100vh - 115px);
 }
 .footer {
   height: 25px;
 }   
     
-    
+/*
+-- My table setting...
+*/
+.mytcol-10{width:10%;}
+.mytcol-20{width:20%;}
+.mytcol-30{width:30%;}
+.mytcol-40{width:40%;}
+.mytcol-50{width:50%;}
+.mytcol-60{width:60%;}
+.mytcol-70{width:70%;}
+.mytcol-80{width:80%;}
+.mytcol-90{width:90%;}
+
+/*
+-- Replace standard setting...
+*/
+.modal-dialog{
+    max-width: 60%;
+}
+.modal-title{
+    font-size:1.5rem;
+}
+.modal-footer{
+    font-size:1.5rem;
+}
+.mytable_enter{
+    table-layout: fixed;
+    font-size: 1.2rem;
+}
+form.cmxform label.error, label.error {
+ color: red;
+}

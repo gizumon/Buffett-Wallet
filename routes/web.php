@@ -21,8 +21,9 @@ Route::get('/home', 'HomeController@index')->name('home');
 
 //Evaluation list page
 Route::get('/list', 'ListController@index')->name('list');
-Route::post('/list', 'ListController@addList')->name('list');
-Route::delete('/list', 'ListController@delete')->name('list');
+Route::post('/list', 'ListController@listRegist')->name('list');
+Route::patch('/list', 'ListController@listUpdate')->name('list');
+Route::delete('/list/{id}', 'ListController@listDelete')->name('list');
 
 
 //Route::get('/list', ['middleware' => 'auth', function () {

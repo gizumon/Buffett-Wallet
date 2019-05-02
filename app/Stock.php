@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Stock extends Model
 {
     //
+    protected $primaryKey = "stock_code";
     /**
      * The attributes that are mass assignable.
      *
@@ -27,6 +28,6 @@ class Stock extends Model
     
     public function stock()
     {
-        return $this->hasMany('App\Evaluation');
+        return $this->hasMany('\App\Evaluation');
     }
 }

@@ -12,7 +12,7 @@
     <div class="row mygreen_light">
         <div class="col-sm-2 myfield_midium"></div>
         <div class="col-sm-4 mygreen_light myfield_midium p-3">
-                <input type="button" onclick="location.href=''" class="mybtn_exlg btn-secondary font-weight-bold myfont_green text-center" value="List">
+                <input type="button" onclick="location.href='/list'" class="mybtn_exlg btn-secondary font-weight-bold myfont_green text-center" value="List">
         </div>
         <div class="col-sm-4 myfield_midium p-3">
                 <input type="button" onclick="location.href=''" class="mybtn_exlg btn-secondary font-weight-bold myfont_green text-center" value="Compare" style="font-size:6vw">
