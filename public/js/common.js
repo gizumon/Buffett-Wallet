@@ -31,7 +31,7 @@ jQuery.validator.addMethod("stockCodeType", function(value, element) {
 
 //number type format
 jQuery.validator.addMethod("numType", function(value, element) {
-    return this.optional(element) || /^\d{3}/.test(value);
+    return this.optional(element) || /^\d{1,3}/.test(value);
 }, "Please input in only number...");
 
 /*
