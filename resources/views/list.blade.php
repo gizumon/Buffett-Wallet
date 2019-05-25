@@ -93,45 +93,44 @@
     @csrf
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title myfont_green font-weight-bold" id="label-regist">New</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+        <h5 class="modal-title myfont_green" id="label-regist">&nbsp;&nbsp;New</h5>
+        <button type="button" class="close mymargin_right" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
       <div class="modal-body">
         <table class="mytable_enter text-left table table-hover table-striped">
-          <tbody>
+          <tbody class="mytable_input">
             <input type="hidden" name="evaluation_id" value="{{$evaluation->id}}">
             <tr>
-              <td class="mytcol-30 myfont_black font-weight-bold myline_height">Evaluation at</td>
-              <td class="mytcol-70 myline_height"><input name="evaluate_date" class="col-sm-11 form-control today font-weight-bold" type="date"></td>
+              <td class="mytcol-40 myfont_black font-weight-bold myline_height">Evaluation at</td>
+              <td class="mytcol-60 myline_height"><input name="evaluate_date" class="col-sm-11 today" type="date"></td>
             </tr>
             <tr>
-              <td class="col-sm-4 myfont_black font-weight-bold myline_height">Stock code</td>
-              <td class="col-sm-8 myline_height"><input name="stock_code" class="col-sm-11 form-control font-weight-bold" maxlength="4" with="number" type="tel" placeholder="ex) 7779"></td>
+              <td class="mytcol-40 myfont_black font-weight-bold myline_height">Stock code</td>
+              <td class="mytcol-60 myline_height"><input name="stock_code" class="col-sm-11" maxlength="4" with="number" type="tel" placeholder="ex) 7779"></td>
             </tr>
             <tr>
-              <td class="col-sm-4 myfont_black font-weight-bold myline_height">Name</td>
-              <td class="col-sm-8 myline_height"><input name="name" class="col-sm-11 form-control font-weight-bold" type="text" placeholder="ex) CYBERDYNE"></td>
+              <td class="mytcol-40 myfont_black font-weight-bold myline_height">Name</td>
+              <td class="mytcol-60 myline_height"><input name="name" class="col-sm-11" type="text" placeholder="ex) CYBERDYNE"></td>
             </tr>
             <tr>
-              <td class="col-sm-4 myfont_black font-weight-bold myline_height">Comment</td>
-              <td class="col-sm-8 myline_height"><textarea name="comment" class="col-sm-11 form-control font-weight-bold" type="text" placeholder="You can enter multiple comments in commas(,)."></textarea></td>
+              <td class="mytcol-40 myfont_black font-weight-bold myline_height">Comment</td>
+              <td class="mytcol-60 myline_height"><textarea name="comment" class="col-sm-11" type="text" placeholder="You can enter multiple comments in commas(,)."></textarea></td>
             </tr>
             <tr>
-              <td class="col-sm-4 myfont_black font-weight-bold myline_height">Point</td>
-              <td class="col-sm-8 myline_height"><input name="point" class="col-sm-11 form-control font-weight-bold" max=100 type="number" value=100></td>
+              <td class="mytcol-40 myfont_black font-weight-bold myline_height">Point</td>
+              <td class="mytcol-60 myline_height"><input name="point" class="col-sm-11" max=100 type="number" value=100></td>
             </tr>
             <tr>
-              <td class="col-sm-4 myfont_black font-weight-bold myline_height">Next check at</td>
-              <td class="col-sm-8 myline_height"><input name="next_check" class="col-sm-11 form-control today font-weight-bold" type="date"></td>
+              <td class="mytcol-40 myfont_black font-weight-bold myline_height">Next check at</td>
+              <td class="mytcol-60 myline_height"><input name="next_check" class="col-sm-11 today" type="date"></td>
             </tr>
           </tbody>
         </table>
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn-lg btn-secondary center-block" data-dismiss="modal">Close</button>
-        <button id="list-regist" type="button" class="btn-lg btn-primary center-block">OK</button>
+        <button id="list-regist" type="button" class="btn mybtn_lg mygreen_dark center-block">Regist</button>
       </div>
     </div>
     </form>
@@ -144,49 +143,48 @@
     @csrf
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title myfont_green font-weight-bold" id="label-update">Edit</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+        <h5 class="modal-title myfont_green" id="label-update">&nbsp;&nbsp;Edit</h5>
+        <button type="button" class="close mymargin_right" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
       <div class="modal-body">
         <table class="mytable_enter text-left table table-hover table-striped">
-          <tbody>
+          <tbody class="mytable_input">
             <input type="hidden" name="evaluation_id" value="{{$evaluation->id}}">
             <tr>
-              <td class="mytcol-30 myfont_black font-weight-bold myline_height">Evaluation at</td>
-              <td class="mytcol-70 myline_height"><input name="evaluate_date" class="col-sm-11 form-control today font-weight-bold" type="date"></td>
+              <td class="mytcol-40 myfont_black font-weight-bold myline_height">Evaluation at</td>
+              <td class="mytcol-60 myline_height"><input name="evaluate_date" class="col-sm-11 today" type="date"></td>
             </tr>
             <tr>
-              <td class="col-sm-4 myfont_black font-weight-bold myline_height">Stock code</td>
-              <td class="col-sm-8 myline_height"><input disabled id="targetStockCode" name="stock_code" class="col-sm-11 form-control font-weight-bold" maxlength="4" with="number" type="tel" value="{{$evaluation->stock_code}}"></td>
+              <td class="mytcol-40 myfont_black font-weight-bold myline_height">Stock code</td>
+              <td class="mytcol-60 myline_height"><input disabled id="targetStockCode" name="stock_code" class="col-sm-11" maxlength="4" with="number" type="tel" value="{{$evaluation->stock_code}}"></td>
             </tr>
             <tr>
-              <td class="col-sm-4 myfont_black font-weight-bold myline_height">Name</td>
-              <td class="col-sm-8 myline_height"><input disabled id="targetName" name="name" class="col-sm-11 form-control font-weight-bold" type="text" value="{{$evaluation->name}}"></td>
+              <td class="mytcol-40 myfont_black font-weight-bold myline_height">Name</td>
+              <td class="mytcol-60 myline_height"><input disabled id="targetName" name="name" class="col-sm-11" type="text" value="{{$evaluation->name}}"></td>
             </tr>
             <tr>
-              <td class="col-sm-4 myfont_black font-weight-bold myline_height">Comment</td>
-              <td class="col-sm-8 myline_height"><textarea id="targetComment" name="comment" class="col-sm-11 form-control font-weight-bold" type="text" placeholder="You can enter multiple comments in commas(,)."></textarea></td>
+              <td class="mytcol-40 myfont_black font-weight-bold myline_height">Comment</td>
+              <td class="mytcol-60 myline_height"><textarea id="targetComment" name="comment" class="col-sm-11" type="text" placeholder="You can enter multiple comments in commas(,)."></textarea></td>
             </tr>
             <tr>
-              <td class="col-sm-4 myfont_black font-weight-bold myline_height">Point</td>
-              <td class="col-sm-8 myline_height"><input id="targetPoint" name="point" class="col-sm-11 form-control font-weight-bold" max=100 type="number" value=100></td>
+              <td class="mytcol-40 myfont_black font-weight-bold myline_height">Point</td>
+              <td class="mytcol-60 myline_height"><input id="targetPoint" name="point" class="col-sm-11" max=100 type="number" value=100></td>
             </tr>
             <tr>
-              <td class="col-sm-4 myfont_black font-weight-bold myline_height">Next check at</td>
-              <td class="col-sm-8 myline_height"><input name="next_check" class="col-sm-11 form-control today font-weight-bold" type="date"></td>
+              <td class="mytcol-40 myfont_black font-weight-bold myline_height">Next check at</td>
+              <td class="mytcol-60 myline_height"><input name="next_check" class="col-sm-11 today" type="date"></td>
             </tr>
           </tbody>
         </table>
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn-lg btn-secondary center-block" data-dismiss="modal">Close</button>
-        <button id="list-update" type="button" class="btn-lg btn-primary center-block">OK</button>
+        <button id="list-update" type="button" class="btn mybtn_lg mygreen_dark center-block">Update</button>
       </div>
     </div>
     </form>
   </div>
 </div>
-<script src="/js/evaluationList/listRegist.js" defer></script>
+<script src="/js/evaluationList/evaluationList.js" defer></script>
 @endsection

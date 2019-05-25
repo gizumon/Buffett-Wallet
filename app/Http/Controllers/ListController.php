@@ -2,11 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use \App\Stock as Stock;
-use \App\Evaluation as Evaluation;
-
 use Illuminate\Http\Request as Request;
+use Illuminate\Support\Facades\Log;
 use Exception;
+use App\Repositories\Evaluation\EvaluationRepositoryInterface as Evaluation;
 
 class ListController extends Controller
 {
@@ -15,9 +14,10 @@ class ListController extends Controller
      *
      * @return void
      */
-    public function __construct()
+    public function __construct(Evaluation $interface)
     {
         $this->middleware('auth');
+        $this->eval_rep = $interface;
     }
 
     /**
@@ -27,7 +27,7 @@ class ListController extends Controller
      */
     public function index()
     {
-        $evaluations = getEvaluationListModels()->get();
+        $evaluations = $this->eval_rep -> getAll();
         return view('list',[
             "evaluations" => $evaluations
         ]);
@@ -40,9 +40,12 @@ class ListController extends Controller
      */
     public function listRegist(Request $request)
     {
-        logger($request);
+        info("listRegist() is called.\n Request::\n".$request);
+        
+        // メンバ変数定義
+        $response;
 
-        //受け取ったJSONを展開する。
+        // 受け取ったJSONを展開する。
         $validator = $request->validate([
             'evaluate_date' => 'required|date',
             'stock_code' => 'required|max:4',
@@ -52,15 +55,19 @@ class ListController extends Controller
             'next_check' => 'required|date',
         ]);
 
-        //レコードの作成
-        $stock = Stock::updateOrCreate([
-            'stock_code' => $request->input('stock_code'),
-        ], [
-            'stock_code' => $request->input('stock_code'),
-            'name' => $request->input('name'),
-        ]);
+        // Stockテーブル DB有無確認用
+        $checkStockArray = [
+            'stock_code' => $request->input('stock_code')
+        ];
 
-        $evaluation = Evaluation::create([
+        // Stockテーブル DB更新用
+        $updateStockArray = [
+            'stock_code' => $request->input('stock_code'),
+            'name' => $request->input('name')
+        ];
+
+        // Evaluationテーブル DB更新用
+        $updateEvalArray = [
             //user_idは現状1ユーザーのみ。今後機能拡張。
             'user_id'=>"1",
             'evaluate_date' => $request->input('evaluate_date'),
@@ -68,13 +75,25 @@ class ListController extends Controller
             'comment' => $request->input('comment'),
             'point' => $request->input('point'),
             'next_check' => $request->input('next_check')
-        ]);
-        //Evaluations dataを取得
-        $evaluations = getEvaluationListModels()->get();
+        ];
+
+        try {
+            // Stocksレコードの作成・更新()
+            $this->eval_rep -> upsertStock($checkStockArray, $updateStockArray);
+            // Evaluationsレコードの作成
+            $response = $this->eval_rep -> create($updateEvalArray);
+
+            // Evaluations dataを取得
+            $evaluations = $this->eval_rep -> getAll();
         
+        } catch (Exception $e) {
+            info("ERROR::".$e);
+        }
+
+        info("listRegist() is successful.\n Response::\n".$response);
         return response()->json(
             [
-                'data' => $evaluations
+                'data' => $response
             ],
             200,[],
             JSON_UNESCAPED_UNICODE
@@ -90,6 +109,9 @@ class ListController extends Controller
     {
         info($request);
 
+        // メンバ変数
+        $response;
+
         //受け取ったJSONを展開する。
         $validator = $request->validate([
             'id' => 'required',
@@ -102,25 +124,24 @@ class ListController extends Controller
         ]);
 
         //レコード更新。
-        $evaluation_id = $request->input('id');
-        try {
-            $evaluation = Evaluation::where('id', $evaluation_id)->update([
-                //user_idは現状1ユーザーのみ。今後機能拡張。
-                'evaluate_date' => $request->input('evaluate_date'),
-                'comment' => $request->input('comment'),
-                'point' => $request->input('point'),
-                'next_check' => $request->input('next_check')
-            ]);
-        } catch (Exception $e){
-            echo '例外キャッチ：', $e->getMessage(),"\n";
-        }
+        $id = $request->input('id');
+        $array = [
+            //user_idは現状1ユーザーのみ。今後機能拡張。
+            'evaluate_date' => $request->input('evaluate_date'),
+            'comment' => $request->input('comment'),
+            'point' => $request->input('point'),
+            'next_check' => $request->input('next_check')
+        ];
 
-        //Evaluations dataを取得
-        $evaluations = getEvaluationListModels()->where('id','=',$evaluation_id)->get();
-        
+        try {
+            $response = $this->eval_rep -> update($id, $array);
+        } catch (Exception $e){
+            report($e->getMessage());
+        }
+       
         return response()->json(
             [
-                'data' => $evaluations
+                'data' => $response
             ],
             200,[],
             JSON_UNESCAPED_UNICODE
@@ -133,22 +154,10 @@ class ListController extends Controller
      */
     public function listDelete($id){
         try {
-            Evaluation::find($id)->delete();
-            //info(Evaluation::withTrashed()->get());
+            $this->eval_rep->delete();
             return redirect('/list');
         } catch ( Exception $e ) {
-            echo '例外キャッチ：', $e->getMessage(),"\n";
+            report($e->getMessage());
         } 
     }
 }
-
-/**
- * Functions for evaluation list
- */
-function getEvaluationListModels(){
-        $evaluations = \DB::table('evaluations')
-                            ->join('stocks','evaluations.stock_code','=','stocks.stock_code');
-        return $evaluations;
-}
-
-?>

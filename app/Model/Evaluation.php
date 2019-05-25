@@ -1,9 +1,8 @@
 <?php
 
-namespace App;
+namespace App\Model;
 
 use Illuminate\Database\Eloquent\Model;
-use SoftDeletes;
 
 class Evaluation extends Model
 {
@@ -14,8 +13,20 @@ class Evaluation extends Model
      * @var array
      */
     protected $fillable = [
-        'id', 'user_id', 'stock_code', 'buy_id', 'sale_id', 'evaluate_date', 'comment',
-        'point', 'next_check', 'delete_flag', 'profit', 'created_at', 'updated_at', 'deleted_at'
+        'id',
+        'user_id',
+        'stock_code',
+        'buy_id',
+        'sale_id',
+        'evaluate_date',
+        'comment',
+        'point',
+        'next_check',
+        'delete_flag',
+        'profit',
+        'created_at',
+        'updated_at',
+        'deleted_at'
     ];
 
     /**
@@ -29,8 +40,9 @@ class Evaluation extends Model
 
     public function evaluation()
     {
-        return $this->belongTo('\App\Stock');
+        return $this->belongTo('\App\Model\Stock');
     }
+    
     /*
      * Soft Delete
      *

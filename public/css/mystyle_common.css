@@ -10,6 +10,24 @@ This application thema color is the followings.
   - Gray : #7C858E
   - Light : #CCD0D5
 */
+/* 全体設定 */
+* {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+input::placeholder {
+    color: #7C858E;
+}
+textarea::placeholder {
+    color: #7C858E;
+}
+caption {
+    padding: 10px;
+    caption-side: top;
+}
+
+.no_margin {
+    margin: 0rem!important;
+}
 
 .no_padding {
     padding:0rem;
@@ -25,17 +43,6 @@ This application thema color is the followings.
 .myfield_midium {
     position: relative;
     height: 10rem;
-}
-.mybtn_exlg {
-    padding: 0.5vw 0.5vw;
-    width: 30vw;
-    height: 20vh;
-    font-size: 7.2vw;
-    line-height: 0;
-    border-radius: 1.5rem; 
-    background: none;
-    background-color: #ffffff;
-    border:0;
 }
 .mybtn_sm {
     height: 1.5rem;
@@ -66,6 +73,28 @@ This application thema color is the followings.
     border-radius: 0.5rem; 
     border:0;
 }
+.mybtn_lg {
+    padding: 0.5vw 0.5vw;
+    width: 23vw;
+    height: 10vh;
+    font-size: 3rem;
+    font-weight: bold;
+    line-height: 0;
+    border-radius: 0.5rem; 
+    border:0;
+    letter-spacing: .1em;
+}
+.mybtn_exlg {
+    padding: 0.5vw 0.5vw;
+    width: 30vw;
+    height: 20vh;
+    font-size: 7.2vw;
+    line-height: 0;
+    border-radius: 1.5rem; 
+    background: none;
+    background-color: #ffffff;
+    border:0;
+}
 .v-center {
     display: table;
     vertical-align: middle;
@@ -74,9 +103,8 @@ This application thema color is the followings.
     font-size: 1.5rem!important;
     letter-spacing: .2rem;
     font-weight: bold; 
-    padding-top: .2rem;
+    padding-top: 1rem;
     padding-bottom: .2rem;
-    padding-left: 3rem;
 }
 .myrounded {
     border-radius:40px;
@@ -95,19 +123,16 @@ This application thema color is the followings.
 .myfont {
     letter-spacing: .1em;
     text-align: justify;
-    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
     color: #ffffff!important;
 }
 .myfont_black {
     letter-spacing: .1em;
     text-align: justify;
-    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
     color: #27313F!important;
 }
 .myfont_green {
     letter-spacing: .1em;
     text-align: justify;
-    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
     color: #0C555D!important;
 }
 .myfont-family_words {
@@ -143,12 +168,9 @@ This application thema color is the followings.
     background-color: #CCD0D5;
     color: #ffffff;
 }
-.content {
-  min-height: calc(100vh - 115px);
+.footer-size {
+  padding: 0 15px;
 }
-.footer {
-  height: 25px;
-}   
     
 /*
 -- My table setting...
@@ -162,6 +184,30 @@ This application thema color is the followings.
 .mytcol-70{width:70%;}
 .mytcol-80{width:80%;}
 .mytcol-90{width:90%;}
+.mytable_enter{
+    table-layout: fixed;
+    font-size: 1.4rem;
+    font-weight: 500;
+    margin-bottom: 1rem;
+}
+.mytable_input > tr > td > input {
+    border: 0;
+    background: none;
+    color: #27313F!important;
+    font-size: 1.2rem;
+}
+.mytable_input > tr > td > textarea {
+    border: 0;
+    background: none;
+    color: #27313F!important;
+    font-size: .9rem;
+}
+.table {
+    margin-bottom: 1rem!important;
+}
+.mymargin_right {
+    margin-right: 10px;
+}
 
 /*
 -- Replace standard setting...
@@ -170,15 +216,16 @@ This application thema color is the followings.
     max-width: 60%;
 }
 .modal-title{
-    font-size:1.5rem;
+    font-size: 3rem;
+    margin-bottom: -1rem;
+    font-weight: 900!important;
 }
 .modal-footer{
-    font-size:1.5rem;
-}
-.mytable_enter{
-    table-layout: fixed;
-    font-size: 1.2rem;
+    font-size: 1.5rem;
 }
 form.cmxform label.error, label.error {
  color: red;
+}
+.modal-content {
+    border-radius : 5rem!important;
 }

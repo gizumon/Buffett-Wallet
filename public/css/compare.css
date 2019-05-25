@@ -1,0 +1,16 @@
+/**
+ * Comapareページ
+ */
+
+.btn-show-modal {
+    padding: 0.5vw 0.5vw;
+    width: 23vw;
+    height: 10vh;
+    font-size: 3rem;
+    font-weight: bold;
+    line-height: 0;
+    border-radius: 0.5rem; 
+    border:0;
+    letter-spacing: .1em;
+    margin: 15px;
+}

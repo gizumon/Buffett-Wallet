@@ -13,7 +13,11 @@ class AppServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        //
+        //Evaluation
+        $this->app->bind(
+            \App\Repositories\Evaluation\EvaluationRepositoryInterface::class,
+            \App\Repositories\Evaluation\EvaluationRepository::class
+        );
     }
 
     /**
@@ -26,3 +30,5 @@ class AppServiceProvider extends ServiceProvider
         //
     }
 }
+
+?>

@@ -1,20 +1,18 @@
 <?php
 
-namespace App;
+namespace App\Model;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Stock extends Model
+class Buy extends Model
 {
-    //
-    protected $primaryKey = "stock_code";
     /**
      * The attributes that are mass assignable.
      *
      * @var array
      */
     protected $fillable = [
-        'stock_code', 'name', 'sales_num', 'created_at',
+        'id', 'evaluation_id', 'stock_code', 'buy_date', 'expectancy'
     ];
 
     /**
@@ -23,11 +21,17 @@ class Stock extends Model
      * @var array
      */
     protected $casts = [
-        'created_at' => 'datetime',
+        //'created_at' => 'datetime',
     ];
-    
-    public function stock()
+
+    public function evaluation()
     {
-        return $this->hasMany('\App\Evaluation');
+        return $this->belongTo('\App\Stock');
     }
+    /*
+     * Soft Delete
+     *
+     * 
+    */ 
+    protected $dates = ['deleted_at'];
 }

@@ -25,6 +25,12 @@ Route::post('/list', 'ListController@listRegist')->name('list');
 Route::patch('/list', 'ListController@listUpdate')->name('list');
 Route::delete('/list/{id}', 'ListController@listDelete')->name('list');
 
+//Compare stocks page
+Route::get('/compare', 'CompareController@index')->name('compare');
+Route::post('/compare/buy', 'CompareController@buyRegist')->name('compare');
+Route::post('/compare/sell', 'CompareController@sellRegist')->name('compare');
+Route::patch('/compare/buy', 'CompareController@buyRegist')->name('compare');
+Route::patch('/compare/sell', 'CompareController@sellRegist')->name('compare');
 
 //Route::get('/list', ['middleware' => 'auth', function () {
 //    $stock_code = 0;
