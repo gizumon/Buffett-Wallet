@@ -1,8 +1,8 @@
 <?php
 
-namespace App\Repositories\Evaluation;
+namespace App\Repositories\Buy;
 
-interface EvaluationRepositoryInterface
+interface BuyRepositoryInterface
 {
     /**
      * 全件取得
@@ -18,23 +18,23 @@ interface EvaluationRepositoryInterface
     public function getId($id);
 
     /**
-     * 購入済み株のテーブルを取得
+     * 未売却の株を取得
      * @return array レコード
      */
-    public function getBoughtAll();
+    public function getNotSoldAll();
 
     /**
-     * 購入も売却もされていない株
-     * @return array 取得したデータ
+     * 売却済み株のテーブルを取得
+     * @return array レコード
      */
-    public function getNotBoughtAll();
+    public function getSoldAll();
 
     /**
-     * テーブルを追加
-     * @param array 追加レコード
-     * @return int ID
-     */
-    public function create($array);
+    * 購入テーブルへレコード追加
+    * @param array 追加対象のレコード
+    * @return array 追加したレコード
+    */
+    public function create($array); 
 
     /**
      * テーブルを更新

@@ -115,7 +115,6 @@ $(function() {
     $('.btnInfo').click(function() {
         // レコードIDを取得。
         var id = $(this).attr("data-id");
-        console.log(id);
         
         //セットデータの取得。
         var stockCode = $("td#stockCodeRow_" + id).text();
@@ -124,12 +123,11 @@ $(function() {
         var point = $("td#pointRow_" + id).text();
 
         //モーダルにデータをセット
-        $("#targetStockCode").val(stockCode);
-        $("#targetName").val(name);
-        $("#targetComment").val(comment);
-        $("#targetPoint").val(point);
-
-        return true;
+        $("input#targetId").val(id);
+        $("input#targetStockCode").val(stockCode);
+        $("input#targetName").val(name);
+        $("textarea#targetComment").val(comment);
+        $("input#targetPoint").val(point);
     });
     
     /**

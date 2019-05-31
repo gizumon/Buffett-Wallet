@@ -9,6 +9,8 @@
 
     <title>{{ config('app.name', 'Buffett Wallet') }}</title>
 
+    <!-- jQuery -->
+    <script src='//ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js'></script>
 
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
@@ -18,12 +20,14 @@
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     <link href="{{ asset('css/importstyle_login.css') }}" rel="stylesheet">
     <link href="{{ asset('css/mystyle_common.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/compare.css') }}" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Indie+Flower" rel="stylesheet">
+
 </head>
-<body>
+<body class="d-flex flex-column">
     <div id="app">
-        <nav class="navbar navbar-expand-md navbar-light navbar-laravel mygreen_dark myheader">
-            <div class="container">
+        <nav class="navbar navbar-expand-md navbar-light navbar-laravel mygreen_dark">
+            <div class="container myheader">
                 <a class="navbar-brand font-weight-bold myfont" href="{{ url('/') }}">
                     {{ config('app.name', 'Buffet Wallet') }}
                 </a>
@@ -56,6 +60,21 @@
                                 </a>
 
                                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                                    <a class="dropdown-item myfont_green font-weight-bold" onclick="location.href='/home'">
+                                        Home
+                                    </a>
+                                    <a class="dropdown-item myfont_green font-weight-bold" onclick="location.href='/list'">
+                                        List
+                                    </a>
+                                    <a class="dropdown-item myfont_green font-weight-bold" onclick="location.href='/compare'">
+                                        Compare
+                                    </a>
+                                    <a class="dropdown-item myfont_green font-weight-bold" onclick="location.href='/wallet'">
+                                        Wallet
+                                    </a>
+                                    <a class="dropdown-item myfont_green font-weight-bold" onclick="location.href='/history'">
+                                        History
+                                    </a>
                                     <a class="dropdown-item myfont_green font-weight-bold" href="{{ route('logout') }}"
                                        onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
@@ -78,12 +97,11 @@
     </main>
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}" defer></script>
-    <script src='//ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js' async></script>
     <script type='text/javascript' src="{{ asset('js/import/jquery.validate.js') }}" defer></script>
     <script type='text/javascript' src="{{ asset('js/import/additional-methods.js') }}" defer></script>
     <script src="{{ asset('js/common.js') }}" defer></script>
 </body>
-<footer class="footer mygreen_dark">
-    <div class="text-center myfont">Developping... Created from April 3rd in 2019.</div>
+<footer class="footer mygreen_dark footer-size">
+    <p> Developping... Created from April 3rd in 2019.</p>
 </footer>
 </html>

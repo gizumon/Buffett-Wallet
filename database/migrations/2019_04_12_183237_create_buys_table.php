@@ -18,6 +18,9 @@ class CreateBuysTable extends Migration
             $table->date('date')->comment('Buy at');
             $table->integer('price')->comment('Price for buy');
             $table->integer('target_price')->comment('Target price');
+            
+            $table->date('updated_at')->useCurrent()->comment('Updated at');
+            $table->date('created_at')->useCurrent()->comment('Created at');
         });
     }
 

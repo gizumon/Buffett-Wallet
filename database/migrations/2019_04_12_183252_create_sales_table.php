@@ -18,6 +18,8 @@ class CreateSalesTable extends Migration
             $table->date('date')->useCurrent()->comment('Sale at');
             $table->integer('price')->comment('Sale price');
             $table->string('reason')->comment('Reason for sale');
+            $table->date('updated_at')->useCurrent()->comment('Updated at');
+            $table->date('created_at')->useCurrent()->comment('Created at');
         });
     }
 

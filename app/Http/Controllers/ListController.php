@@ -3,8 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request as Request;
-use Illuminate\Support\Facades\Log;
 use Exception;
+
 use App\Repositories\Evaluation\EvaluationRepositoryInterface as Evaluation;
 
 class ListController extends Controller

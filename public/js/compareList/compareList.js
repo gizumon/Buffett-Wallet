@@ -1,8 +1,8 @@
-$(function(){
+$(function() {
     /**
      * Set serch stock code.
      */
-    $('#serch_code').blur(function(){
+    $('#serch_code').change(function(){
         if (String($(this).val()).length == 4){
             //検索リンク一覧を表示処理
             $("#displaySearch").css("display","block");
@@ -13,6 +13,7 @@ $(function(){
                 "https://kabuyoho.ifis.co.jp/index.php?action=tp1&sa=report_top&bcode=",
                 "https://twitter.com/search?src=typd&q="
             ];
+            var setName = "WEB SITE";
             //リンクをセット
             $('a.setSearchValue').each(function (){
                 const link = setLink[cnt] + $('#serch_code').val() + "";
@@ -21,7 +22,7 @@ $(function(){
                 cnt = cnt + 1;
             });
 
-            $("#setStockCode").text($("#setStockCode").text() + "    [ Stock code : " + $('#serch_code').val() + " ]");
+            $("#setStockCode").text( setName + "    [ Stock code : " + $('#serch_code').val() + " ]");
 
         } else {
             $("#displaySearch").css("display","none");
@@ -31,9 +32,13 @@ $(function(){
     /**
      * Validater setting for evaluation list regist
      */
-    var listValid = {
+    var buyValid = {
         rules:{
-            evaluate_date:{
+            evaluation_id:{
+                required:true,
+                numType:true
+            },
+            date:{
                 required:true,
                 dateType:true
             },
@@ -41,52 +46,73 @@ $(function(){
                 required:true,
                 stockCodeType:true
             },
-            name:{
-                required:true,
-                maxlength:20
-            },
-            comment:{
-                required:false
-            },
-            point:{
+            price:{
                 required:true,
                 numType:true
             },
-            next_check:{
-                required:false,
-                dateType:true
+            expectancy:{
+                required:true,
+                numType:true
             }
         }
-    }
+    };
 
     /**
-     * Regist new evaluation list.
+     * Validater setting for evaluation list regist
      */
-    $('#list-regist').click(function(){
+    var sellValid = {
+        rules:{
+            evaluation_id:{
+                required:true,
+                numType:true
+            },
+            date:{
+                required:true,
+                dateType:true
+            },
+            stock_code:{
+                required:true,
+                stockCodeType:true
+            },
+            price:{
+                required:true,
+                numType:true
+            },
+            description:{
+                required:true
+            }
+        }
+    };
+
+    /**
+     * 購入リスト新規追加
+     */
+    $('#buy-regist').click(function() {
+        // evaluation_idの取得と反映
+        var evaluation_id = $('[name="stock_code"] option:selected').attr("data-id");
+        $('#buy').find('input[name="evaluation_id"]').val(evaluation_id); 
+
         //フォームバリデーション
-        $('#regist').validate(listValid);
-        if (!$('#regist').valid()) {
+        $('#buy').validate(buyValid);
+        if (!$('#buy').valid()) {
             return false;
-        };
+        }
 
         //送信ボタンを不活性にする。 
         var button = $(this);
         button.attr("disabled", true);
 
         var data= {
-            evaluate_date: $('#regist').find('input[name="evaluate_date"]').val(),
-            stock_code: $('#regist').find('input[name="stock_code"]').val(),
-            name: $('#regist').find('input[name="name"]').val(),
-            comment: $('#regist').find('textarea[name="comment"]').val(),
-            point: $('#regist').find('input[name="point"]').val(),
-            next_check: $('#regist').find('input[name="next_check"]').val(),
+            evaluation_id: $('#buy').find('input[name="evaluation_id"]').val(),
+            date: $('#buy').find('input[name="date"]').val(),
+            price: $('#buy').find('input[name="price"]').val(),
+            expectancy: $('#buy').find('input[name="expectancy"]').val()
         };
-        console.log(data);
 
         $.ajaxSetup();
         $.ajax({
             type: "POST",
-            url: "/list",
+            url: "/compare/buy",
             data: JSON.stringify(data),
             contentType: "application/json",
             dataType: "json",
@@ -95,9 +121,9 @@ $(function(){
             },
             success: function(json_data){
                 console.log(json_data.data);
-                if (!json_data.data[0]) {
-                    alert("Transaction error. " + json_data[1]);
-                }
+                // if (!json_data.data[0]) {
+                //     alert("Transaction error. " + json_data[1]);
+                // }
                 console.log(json_data.data);
                 location.reload();
             },
@@ -107,62 +133,34 @@ $(function(){
             always: function() {
                 button.attr("disabled",false);
             }
-        })
+        });
     });
 
     /**
-     * Editボタン押下時に、
+     * 売却リスト新規追加
      */
-    $('.btnInfo').click(function() {
-        // レコードIDを取得。
-        var id = $(this).attr("data-id");
-        console.log(id);
-        
-        //セットデータの取得。
-        var stockCode = $("td#stockCodeRow_" + id).text();
-        var name = $("td#nameRow_" + id).text();
-        var comment = $("td#commentRow_" + id).text();
-        var point = $("td#pointRow_" + id).text();
-
-        //モーダルにデータをセット
-        $("#targetStockCode").val(stockCode);
-        $("#targetName").val(name);
-        $("#targetComment").val(comment);
-        $("#targetPoint").val(point);
-
-        return true;
-    });
-    
-    /**
-     * Update existing evaluation list.
-    */
-    $('#list-update').click(function(){
-        //バリデーション
-        $('#update').validate(listValid);
-        if (!$('#update').valid()) {
+    $('#sell-regist').click(function() {
+        //フォームバリデーション
+        $('#sell').validate(sellValid);
+        if (!$('#sell').valid()) {
             return false;
-        };
+        }
 
         //送信ボタンを不活性にする。 
         var button = $(this);
         button.attr("disabled", true);
 
         var data= {
-            id: $('#update').find('input[name="evaluation_id"]').val(),
-            evaluate_date: $('#update').find('input[name="evaluate_date"]').val(),
-            stock_code: $('#update').find('input[name="stock_code"]').val(),
-            name: $('#update').find('input[name="name"]').val(),
-            comment: $('#update').find('textarea[name="comment"]').val(),
-            point: $('#update').find('input[name="point"]').val(),
-            next_check: $('#update').find('input[name="next_check"]').val(),
+            evaluation_id: $('#sell').find('input[name="evaluation_id"]').val(),
+            date: $('#sell').find('input[name="date"]').val(),
+            price: $('#sell').find('input[name="price"]').val(),
+            expectancy: $('#sell').find('textarea[name="description"]').val()
         };
-
-        console.log(data);
 
         $.ajaxSetup();
         $.ajax({
-            type: "PATCH",
-            url: "/list",
+            type: "POST",
+            url: "/compare/sell",
             data: JSON.stringify(data),
             contentType: "application/json",
             dataType: "json",
@@ -171,9 +169,9 @@ $(function(){
             },
             success: function(json_data){
                 console.log(json_data.data);
-                if (!json_data.data[0]) {
-                    alert("Transaction error. " + json_data[1]);
-                }
+                // if (!json_data.data[0]) {
+                //     alert("Transaction error. " + json_data[1]);
+                // }
                 console.log(json_data.data);
                 location.reload();
             },
@@ -183,6 +181,6 @@ $(function(){
             always: function() {
                 button.attr("disabled",false);
             }
-        })
+        });
     });
 });

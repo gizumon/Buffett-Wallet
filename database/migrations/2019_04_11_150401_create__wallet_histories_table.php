@@ -22,6 +22,8 @@ class CreateWalletHistoriesTable extends Migration
             $table->integer('bitcoin_sum')->nullable()->comment('Not use:Total bitcoin investment funds');
             $table->integer('additional_fund')->default(0)->comment('Additinal cash funds');
             $table->date('date')->useCurrent()->comment('History');
+            $table->date('updated_at')->useCurrent()->comment('Updated at');
+            $table->date('created_at')->useCurrent()->comment('Created at');
             //外部キー
             $table->foreign('user_id')->references('id')->on('users');
         });

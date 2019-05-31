@@ -37,10 +37,25 @@ class Evaluation extends Model
     protected $casts = [
         //'created_at' => 'datetime',
     ];
-
-    public function evaluation()
+    /**
+     * stocksテーブルとのリレーション(多vs1)
+     */
+    public function stocks()
     {
         return $this->belongTo('\App\Model\Stock');
+    }
+
+    /**
+     * 
+     */
+    public function buys()
+    {
+        return $this->belongTo('\App\Model\Buy');
+    }
+    
+    public function sales()
+    {
+        return $this->belongTo('\App\Model\Sale');
     }
     
     /*

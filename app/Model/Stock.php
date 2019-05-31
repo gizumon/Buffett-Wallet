@@ -26,8 +26,8 @@ class Stock extends Model
         'created_at' => 'datetime',
     ];
     
-    public function stock()
+    public function evaluations()
     {
-        return $this->hasMany('\App\Evaluation');
+        return $this->hasMany('\App\Model\Evaluation', 'stock_code');
     }
 }

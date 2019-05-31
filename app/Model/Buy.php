@@ -12,7 +12,13 @@ class Buy extends Model
      * @var array
      */
     protected $fillable = [
-        'id', 'evaluation_id', 'stock_code', 'buy_date', 'expectancy'
+        'id',
+        'date',
+        'price',
+        'target_price',
+        'created_at',
+        'updated_at',
+        'deleted_at'
     ];
 
     /**
@@ -24,11 +30,12 @@ class Buy extends Model
         //'created_at' => 'datetime',
     ];
 
-    public function evaluation()
+    public function evaluations()
     {
-        return $this->belongTo('\App\Stock');
+        return $this->hasOne('\App\Model\Evaluation');
     }
-    /*
+    
+    /* 
      * Soft Delete
      *
      * 

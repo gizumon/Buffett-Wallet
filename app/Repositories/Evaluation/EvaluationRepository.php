@@ -9,12 +9,10 @@ use App\Model\Stock;
 class EvaluationRepository implements EvaluationRepositoryInterface
 {
     protected $table;
-    protected $model;
 
     public function __construct()
     {
       $this->table = 'evaluations';
-      $this->model = Evaluation::join('stocks','evaluations.stock_code','=','stocks.stock_code');
     }
 
     /**
@@ -23,8 +21,21 @@ class EvaluationRepository implements EvaluationRepositoryInterface
      */
     public function getAll()
     {
-        return $this->model
+        return $this->getEvalWithStockModel()
+                    ->whereNull('sale_id')
+                    ->get();
+    }
+
+    /**
+     * 購入も売却もされていない株
+     * @return array 取得したデータ
+     */
+    public function getNotBoughtAll()
+    {
+        return $this->getEvalWithStockModel()
                     ->whereNull('buy_id')
+                    ->whereNull('sale_id')
+                    ->orderBy('point','desc')
                     ->get();
     }
 
@@ -34,21 +45,22 @@ class EvaluationRepository implements EvaluationRepositoryInterface
      */
     public function getBoughtAll()
     {
-        return $this->model
+        return $this->getEvalWithStockModel()
                     ->whereNotNull('buy_id')
                     ->whereNull('sale_id')
+                    ->orderBy('point','desc')
                     ->get();
     }
 
     /**
-     * EvaluationsWithStocksから指定したテーブルを取得
+     * 指定したテーブルを取得
      * @param int 取得対象のテーブルID
      * @return array 取得したデータ
      */
     public function getId($id)
     {
-        return $this->model
-                    ->where('id','=',$evaluation_id)
+        return $this->getEvalWithStockModel()
+                    ->where('id','=',$id)
                     ->get();
     }
 
@@ -94,5 +106,10 @@ class EvaluationRepository implements EvaluationRepositoryInterface
     {
         Evaluation::where('id', $id)->delete();
         return true;
+    }
+
+    private function getEvalWithStockModel()
+    {
+        return Evaluation::join('stocks','evaluations.stock_code','=','stocks.stock_code');
     }
 }

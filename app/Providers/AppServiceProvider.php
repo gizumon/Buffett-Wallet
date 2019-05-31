@@ -18,6 +18,16 @@ class AppServiceProvider extends ServiceProvider
             \App\Repositories\Evaluation\EvaluationRepositoryInterface::class,
             \App\Repositories\Evaluation\EvaluationRepository::class
         );
+        //Buy
+        $this->app->bind(
+            \App\Repositories\Buy\BuyRepositoryInterface::class,
+            \App\Repositories\Buy\BuyRepository::class
+        );
+        //Sale
+        $this->app->bind(
+            \App\Repositories\Sale\SaleRepositoryInterface::class,
+            \App\Repositories\Sale\SaleRepository::class
+        );       
     }
 
     /**
